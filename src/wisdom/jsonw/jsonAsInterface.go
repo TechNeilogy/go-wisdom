@@ -6,7 +6,10 @@ import (
 	"github.com/TechNeilogy/go-wisdom/src/util"
 )
 
-func RunJsonAsInterface() {
+func RunJsonAsInterface(run bool) {
+	if !run {
+		return
+	}
 
 	util.PrintHeader("JSON as Raw Interfaces")
 

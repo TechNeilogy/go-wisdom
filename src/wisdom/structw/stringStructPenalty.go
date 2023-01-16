@@ -28,7 +28,10 @@ func testStringStruct(count int, text string) (rtn []stringStruct) {
 	return
 }
 
-func RunStringStructPenalty() {
+func RunStringStructPenalty(run bool) {
+	if !run {
+		return
+	}
 
 	util.PrintHeader("String struct Performance Penalty")
 

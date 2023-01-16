@@ -41,7 +41,10 @@ func (o *oop) bycopyref(a int) *oop {
 	return o
 }
 
-func RunOopThisSemantics() {
+func RunOopThisSemantics(run bool) {
+	if !run {
+		return
+	}
 
 	util.PrintHeader("OOP 'this' Passing Semantics")
 

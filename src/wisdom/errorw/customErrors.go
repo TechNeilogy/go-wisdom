@@ -21,7 +21,10 @@ func div(a int, b int) (int, error) {
 	return a / b, nil
 }
 
-func RunCustomErrors() {
+func RunCustomErrors(run bool) {
+	if !run {
+		return
+	}
 
 	util.PrintHeader("Custom Error Handling")
 
