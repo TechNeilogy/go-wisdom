@@ -1,3 +1,3 @@
-module github.com/TechNeilogy/go-wisdom-0
+module github.com/TechNeilogy/go-wisdom
 
 go 1.19

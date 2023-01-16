@@ -1,10 +1,12 @@
 package main
 
-import jsonarray "github.com/TechNeilogy/go-wisdom-0/src/wisdom/json"
+import (
+	jsonarray2 "github.com/TechNeilogy/go-wisdom/src/wisdom/json"
+)
 
 func main() {
 
 	// oopthissemantics.Run()
 	// customerror.Run()
-	jsonarray.RunCible()
+	jsonarray2.Run()
 }

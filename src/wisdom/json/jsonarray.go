@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func RunCible() {
+func Run() {
 
 	var v interface{}
 
