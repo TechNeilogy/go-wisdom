@@ -14,12 +14,12 @@ func PrintHeader(msg string) {
 	fmt.Println("")
 }
 
-func Stats(fs []float64) (float64, float64) {
+func Stats(fs []float64) (float64, float64, float64) {
 
 	count := len(fs)
 
 	if count < 1 {
-		return 0, 0
+		return 0, 0, 0
 	}
 
 	var sum float64
@@ -35,5 +35,5 @@ func Stats(fs []float64) (float64, float64) {
 		std += d * d
 	}
 
-	return mean, math.Sqrt(std)
+	return sum, mean, math.Sqrt(std)
 }

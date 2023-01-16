@@ -38,6 +38,7 @@ func RunStringStructPenalty(run bool) {
 	runs := 5
 	count := 1000
 	countInner := 100
+	countTotal := count * count * countInner
 	text := ""
 
 	intRun := []float64{}
@@ -45,6 +46,7 @@ func RunStringStructPenalty(run bool) {
 
 	fmt.Printf("Outer Loops: %v\n", count*count)
 	fmt.Printf("Inner Loops: %v\n", countInner)
+	fmt.Printf("Total Loops: %v\n", countTotal)
 	fmt.Printf("Run: ")
 	for k := 1; k <= runs; k++ {
 
@@ -71,8 +73,11 @@ func RunStringStructPenalty(run bool) {
 	fmt.Printf("\n")
 
 	fmt.Printf("Result of %v Runs:\n", runs)
-	mean, std := util.Stats(intRun)
-	fmt.Printf("    intStruct:  Mean=%v  Std=%v\n", mean, std)
-	mean, std = util.Stats(stringRun)
-	fmt.Printf("    stringStruct:  Mean=%v  Std=%v\n", mean, std)
+	sumInt, meanInt, stdInt := util.Stats(intRun)
+	sumString, meanString, stdString := util.Stats(stringRun)
+	fmt.Printf("    intStruct:  Sum=%v Mean=%v  Std=%v\n", sumInt, meanInt, stdInt)
+	fmt.Printf("    stringStruct:  Sum=%v Mean=%v  Std=%v\n", meanString, stdString, sumString)
+	fmt.Printf("    intStruct per Second:  %v\n", float64(countTotal)/sumInt)
+	fmt.Printf("    stringStruct per Second:  %v\n", float64(countTotal)/sumString)
+
 }

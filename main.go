@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-	structw.RunStringStructPenalty(false)
+	structw.RunStringStructPenalty(true)
 	structw.RunOopThisSemantics(false)
 	errorw.RunCustomErrors(false)
 	jsonw.RunJsonAsInterface(false)
