@@ -1,6 +1,9 @@
 package oopthissemantics
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/TechNeilogy/go-wisdom/src/util"
+)
 
 type oop struct {
 	a int
@@ -40,7 +43,7 @@ func (o *oop) bycopyref(a int) *oop {
 
 func Run() {
 
-	fmt.Println("OOP 'this' Passing Semantics")
+	util.PrintHeader("OOP 'this' Passing Semantics")
 
 	o := oop{
 		a: 1,

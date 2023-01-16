@@ -1,6 +1,9 @@
 package customerror
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/TechNeilogy/go-wisdom/src/util"
+)
 
 type DivZero struct {
 	v0 int
@@ -19,21 +22,16 @@ func div(a int, b int) (int, error) {
 }
 
 func Run() {
-	a := 10
-	b := 3
-	res, err := div(10, 3)
-	if err != nil {
-		fmt.Printf("Error: %v\n", err)
-	} else {
-		fmt.Printf("%v / %v = %v\n", a, b, res)
-	}
 
-	a = 10
-	b = 3
-	res, err = div(10, 0)
-	if err != nil {
-		fmt.Printf("Error: %v\n", err)
-	} else {
-		fmt.Printf("%v / %v = %v\n", a, b, res)
+	util.PrintHeader("Custom Error Handling")
+
+	a := 10
+	for _, b := range []int{3, 0} {
+		res, err := div(10, b)
+		if err != nil {
+			fmt.Printf("Error: %v\n", err)
+		} else {
+			fmt.Printf("No Error: %v / %v = %v\n", a, b, res)
+		}
 	}
 }
