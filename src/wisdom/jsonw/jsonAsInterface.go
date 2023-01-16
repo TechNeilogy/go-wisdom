@@ -1,4 +1,4 @@
-package jsonarray
+package jsonw
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 	"github.com/TechNeilogy/go-wisdom/src/util"
 )
 
-func Run() {
+func RunJsonAsInterface() {
 
 	util.PrintHeader("JSON as Raw Interfaces")
 

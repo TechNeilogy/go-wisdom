@@ -1,4 +1,4 @@
-package oopthissemantics
+package structw
 
 import (
 	"fmt"
@@ -41,7 +41,7 @@ func (o *oop) bycopyref(a int) *oop {
 	return o
 }
 
-func Run() {
+func RunOopThisSemantics() {
 
 	util.PrintHeader("OOP 'this' Passing Semantics")
 

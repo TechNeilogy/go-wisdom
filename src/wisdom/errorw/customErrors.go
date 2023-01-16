@@ -1,4 +1,4 @@
-package customerror
+package errorw
 
 import (
 	"fmt"
@@ -21,7 +21,7 @@ func div(a int, b int) (int, error) {
 	return a / b, nil
 }
 
-func Run() {
+func RunCustomErrors() {
 
 	util.PrintHeader("Custom Error Handling")
 
