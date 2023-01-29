@@ -2,6 +2,11 @@ package functionalw
 
 import "fmt"
 
+// NOTE:
+// As is pointed out here: https://www.youtube.com/watch?v=rpB3P0QlvII
+// the use of functional programming constructs can entail performance penalties.
+// Always consider the reasons why you chose Go in the first place.
+
 // Map function.
 // From: https://stackoverflow.com/questions/71624828/is-there-a-way-to-map-an-array-of-objects-in-golang
 func Map[T, U any](ts []T, f func(T) U) []U {
