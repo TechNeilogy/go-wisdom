@@ -17,6 +17,22 @@ func Map[T, U any](ts []T, f func(T) U) []U {
 	return us
 }
 
+type MyStream[T any] struct {
+	data []T
+}
+
+func (s *MyStream[T]) Filter(f func(T) bool) *MyStream[T] {
+	var rtn []T
+	for i := range s.data {
+		if f(s.data[i]) {
+			rtn = append(rtn, s.data[i])
+		}
+	}
+	return &MyStream[T]{
+		rtn,
+	}
+}
+
 // MakeMul Example of Currying.
 func MakeMul(a int) func(int) int {
 	return func(b int) int {
@@ -35,6 +51,16 @@ func RunFunctionalWisdom(run bool) {
 	mulFunc := MakeMul(mul)
 	data1 := Map(data0, mulFunc)
 
+	stream1 := MyStream[int]{
+		data1,
+	}
+
+	// Note: Much slower than just a single loop.
+	stream2 := stream1.
+		Filter(func(x int) bool { return x > 10 }).
+		Filter(func(x int) bool { return x < 20 })
+
 	fmt.Printf("Original: %v\n", data0)
 	fmt.Printf("Times %v: %v\n", mul, data1)
+	fmt.Printf("10 < x < 20: %v\n", stream2.data)
 }
