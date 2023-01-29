@@ -10,8 +10,8 @@ import (
 func main() {
 
 	structw.RunStringStructPenalty(false)
-	structw.RunOopThisSemantics(false)
-	errorw.RunCustomErrors(false)
-	jsonw.RunJsonAsInterface(false)
+	structw.RunOopThisSemantics(true)
+	errorw.RunCustomErrors(true)
+	jsonw.RunJsonAsInterface(true)
 	functionalw.RunFunctionalWisdom(true)
 }

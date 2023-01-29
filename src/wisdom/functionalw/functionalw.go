@@ -1,6 +1,9 @@
 package functionalw
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/TechNeilogy/go-wisdom/src/util"
+)
 
 // NOTE:
 // As is pointed out here: https://www.youtube.com/watch?v=rpB3P0QlvII
@@ -40,11 +43,7 @@ func MakeMul(a int) func(int) int {
 	}
 }
 
-func RunFunctionalWisdom(run bool) {
-
-	if !run {
-		return
-	}
+func runMappingAndFiltering() {
 
 	data0 := []int{1, 2, 3, 4, 5}
 	mul := 4
@@ -60,7 +59,18 @@ func RunFunctionalWisdom(run bool) {
 		Filter(func(x int) bool { return x > 10 }).
 		Filter(func(x int) bool { return x < 20 })
 
+	util.PrintHeader("Functional Mapping and Filtering")
+
 	fmt.Printf("Original: %v\n", data0)
-	fmt.Printf("Times %v: %v\n", mul, data1)
-	fmt.Printf("10 < x < 20: %v\n", stream2.data)
+	fmt.Printf("Map Times %v: %v\n", mul, data1)
+	fmt.Printf("Filter 10 < x < 20: %v\n", stream2.data)
+}
+
+func RunFunctionalWisdom(run bool) {
+
+	if !run {
+		return
+	}
+
+	runMappingAndFiltering()
 }
