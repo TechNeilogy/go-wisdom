@@ -1,0 +1,2 @@
+// JSON handling.
+package jsonw
