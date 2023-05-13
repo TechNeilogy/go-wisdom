@@ -16,6 +16,7 @@ func ExampleScanSet() {
 		}
 		fmt.Println()
 	}
+
 	// output: 22222
 	//22222
 	//12222

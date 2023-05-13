@@ -24,23 +24,23 @@ func (d *JsonData) Field1() string {
 	return d.jsonData.Field1
 }
 
-type Whatever struct {
+type NoExportedFields struct {
 	someField int
 }
 
-func (w *Whatever) MarshalJSON() ([]byte, error) {
+func (nef *NoExportedFields) MarshalJSON() ([]byte, error) {
 	return json.Marshal(struct {
 		SomeField int `json:"some_field"`
 	}{
-		SomeField: w.someField,
+		SomeField: nef.someField,
 	})
 }
 
-func (w *Whatever) UnmarshalJSON(b []byte) error {
+func (nef *NoExportedFields) UnmarshalJSON(b []byte) error {
 	var x map[string]interface{}
 	err := json.Unmarshal(b, &x)
 	if err == nil {
-		w.someField = int(x["some_field"].(float64))
+		nef.someField = int(x["some_field"].(float64))
 	}
 	return err
 }
@@ -69,7 +69,7 @@ func RunJsonMarshallingUnexported(run bool) {
 
 	println(sample1.Field2)
 
-	we := Whatever{23}
+	we := NoExportedFields{23}
 
 	b, err = we.MarshalJSON()
 
@@ -77,7 +77,7 @@ func RunJsonMarshallingUnexported(run bool) {
 
 	s := `{"some_field":1000} `
 
-	we2 := Whatever{2322}
+	we2 := NoExportedFields{2322}
 
 	println(we2.someField)
 

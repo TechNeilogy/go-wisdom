@@ -1,18 +1,8 @@
 package util
 
 import (
-	"fmt"
 	"math"
-	"strings"
 )
-
-func PrintHeader(msg string) {
-	fmt.Println("")
-	fmt.Printf("+%v+\n", strings.Repeat("-", len(msg)+2))
-	fmt.Printf("| %v |\n", msg)
-	fmt.Printf("+%v+\n", strings.Repeat("-", len(msg)+2))
-	fmt.Println("")
-}
 
 func Stats(fs []float64) (float64, float64, float64) {
 
