@@ -144,9 +144,9 @@ func RunBreadthFirst(key string) {
 	fmt.Printf("Breadth First\n")
 	if path != nil {
 		shortest := path.path[len(key):]
-		fmt.Printf("    Shortest: (%v) %s\n", len(shortest), shortest)
+		fmt.Printf("Shortest: (%v) %s\n", len(shortest), shortest)
 	} else {
-		fmt.Println("    No valid path.")
+		fmt.Println("No valid path.")
 	}
 }
 
@@ -175,10 +175,10 @@ func RunDepthFirst(key string) {
 		}
 		shortest = shortest[len(key):]
 		longest = longest[len(key):]
-		fmt.Printf("    Shortest: (%v) %s\n", len(shortest), shortest)
-		fmt.Printf("    Longest: (%v) %s\n", len(longest), longest)
+		fmt.Printf("Shortest: (%v) %s\n", len(shortest), shortest)
+		fmt.Printf("Longest: (%v) %s\n", len(longest), longest)
 	} else {
-		fmt.Println("    No valid path.")
+		fmt.Println("No valid path.")
 	}
 }
 
