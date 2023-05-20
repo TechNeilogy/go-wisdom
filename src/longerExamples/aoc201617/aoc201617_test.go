@@ -1,4 +1,4 @@
-package advent001
+package aoc201617
 
 func ExampleRun() {
 
