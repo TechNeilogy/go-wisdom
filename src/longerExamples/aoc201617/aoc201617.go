@@ -179,14 +179,9 @@ func (m *Maze) DepthFirstSearch(
 //
 // key is the maze key specified in the problem.
 func RunBreadthFirst(
+	maze *Maze,
 	key string,
 ) {
-	maze := &Maze{
-		4, 4,
-		0, 0,
-		3, 3,
-	}
-
 	path := maze.BreadthFirstSearch(
 		[]Path{
 			{
@@ -210,13 +205,10 @@ func RunBreadthFirst(
 // and reports the results.//
 //
 // key is the maze key specified in the problem.
-func RunDepthFirst(key string) {
-	maze := &Maze{
-		4, 4,
-		0, 0,
-		3, 3,
-	}
-
+func RunDepthFirst(
+	maze *Maze,
+	key string,
+) {
 	paths := maze.DepthFirstSearch(
 		key,
 		true,
@@ -244,6 +236,12 @@ func RunDepthFirst(key string) {
 }
 
 func Run(key string) {
-	RunBreadthFirst(key)
-	RunDepthFirst(key)
+	maze := &Maze{
+		4, 4,
+		0, 0,
+		3, 3,
+	}
+
+	RunBreadthFirst(maze, key)
+	RunDepthFirst(maze, key)
 }
