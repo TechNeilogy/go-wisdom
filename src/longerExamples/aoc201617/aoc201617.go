@@ -125,8 +125,8 @@ func (m *Maze) BreadthFirstSearch(
 // x and y are the current position.
 // (Cheaper to pass than to re-compute from pathCurrent.)
 //
-// If findAll is true, all valid paths are returned.
-// If findAll is false, only the first valid path is returned.
+// If exhaustive is true, all valid paths are returned.
+// If exhaustive is false, only the first valid path is returned.
 //
 // pathAcc accumulates a list of valid paths.
 func (m *Maze) DepthFirstSearchExt(
