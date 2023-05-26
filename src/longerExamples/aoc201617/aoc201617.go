@@ -133,7 +133,7 @@ func (m *Maze) DepthFirstSearchExt(
 	pathCurrent string,
 	x int,
 	y int,
-	findAll bool,
+	exhaustive bool,
 	pathAcc *[]string,
 ) bool {
 	if x == m.XGoal && y == m.YGoal {
@@ -148,9 +148,9 @@ func (m *Maze) DepthFirstSearchExt(
 				pathCurrent+d.Path,
 				xn,
 				yn,
-				findAll,
+				exhaustive,
 				pathAcc,
-			) && !findAll {
+			) && !exhaustive {
 				return true
 			}
 		}
