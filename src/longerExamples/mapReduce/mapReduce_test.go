@@ -20,14 +20,14 @@ func Fib(n int) int {
 func ExampleMapReduce() {
 	ctx := context.TODO()
 
-	ll := [][]int{
-		{0, 1, 2, 3, 4, 41},
-		{5, 6, 7, 8, 9, 41},
-		{0, 1, 2, 3, 4, 41},
-		{5, 6, 7, 8, 9, 41},
-	}
-
-	il := MakeIterList(ll)
+	il := MakeIterList(
+		[][]int{
+			{0, 1, 2, 3, 4, 41},
+			{5, 6, 7, 8, 9, 41},
+			{0, 1, 2, 3, 4, 41},
+			{5, 6, 7, 8, 9, 41},
+		},
+	)
 
 	sum := MapReduce[[]int](
 		ctx,

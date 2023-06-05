@@ -12,7 +12,8 @@ type MapFunc[T any, U any] func(
 ) U
 
 // Iter defines an iterable.
-// (Go lacks this.)
+// Go deliberately lacks one as a general case,
+// but they can sometimes be useful.
 type Iter[T any] interface {
 	More() bool
 	Item() T
@@ -70,8 +71,7 @@ func MapReduce[T any, U any, V any](
 	// spin up the map goroutines
 	for iter.More() {
 		wg.Add(1)
-		// Prevents a race condition:
-		item := iter.Item()
+		item := iter.Item() // prevents a race condition
 		go func() {
 			defer wg.Done()
 			cU <- mf(ctx, item)
