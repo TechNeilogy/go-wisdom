@@ -62,6 +62,10 @@ func MapReduce[T any, U any, V any](
 	cQ := make(chan bool) // signal to quit reduce goroutine
 	cV := make(chan V)    // reduce => this function
 
+	defer close(cU)
+	defer close(cQ)
+	defer close(cV)
+
 	// Spin up the reduce goroutine.
 	go rf.reduce(ctx, cU, cQ, cV)
 
