@@ -81,8 +81,8 @@ func StringStructPenalty() {
 	fmt.Printf("\n")
 
 	fmt.Printf("Result of %v Runs:\n", runs)
-	sumInt, meanInt, _ := util.Stats(intRun)
-	sumString, meanString, _ := util.Stats(stringRun)
+	_, sumInt, meanInt, _ := util.Stats(intRun)
+	_, sumString, meanString, _ := util.Stats(stringRun)
 	fmt.Printf("sumString > sumInt = %v\n", sumString > sumInt)
 	fmt.Printf("meanString > meanInt = %v", meanString > meanInt)
 
@@ -137,8 +137,8 @@ func IntPtrStructPenalty() {
 	fmt.Printf("\n")
 
 	fmt.Printf("Result of %v Runs:\n", runs)
-	sumInt, meanInt, _ := util.Stats(intRun)
-	sumIntPtr, meanIntPtr, _ := util.Stats(intPtrRun)
+	_, sumInt, meanInt, _ := util.Stats(intRun)
+	_, sumIntPtr, meanIntPtr, _ := util.Stats(intPtrRun)
 	fmt.Printf("sumIntPtr > sumInt = %v\n", sumIntPtr > sumInt)
 	fmt.Printf("meanIntPtr > meanInt = %v\n", meanIntPtr > meanInt)
 
