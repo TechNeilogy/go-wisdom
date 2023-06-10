@@ -57,6 +57,7 @@ func MapReduce[T any, U any, V any](
 	mf MapFunc[T, U],
 	rf ReduceFunc[U, V],
 	iter Iter[T],
+	concurrent bool,
 ) V {
 	cU := make(chan U)    // map => reduce
 	cQ := make(chan bool) // signal to quit reduce goroutine
@@ -76,10 +77,17 @@ func MapReduce[T any, U any, V any](
 	for iter.More() {
 		wg.Add(1)
 		item := iter.Item() // prevents a race condition
-		go func() {
-			defer wg.Done()
-			cU <- mf(ctx, item)
-		}()
+		if concurrent {
+			go func() {
+				defer wg.Done()
+				cU <- mf(ctx, item)
+			}()
+		} else {
+			func() {
+				defer wg.Done()
+				cU <- mf(ctx, item)
+			}()
+		}
 	}
 
 	wg.Wait()
