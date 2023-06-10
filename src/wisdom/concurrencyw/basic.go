@@ -26,7 +26,7 @@ func RunFib(
 	wg.Done()
 }
 
-func Basic(
+func BasicChan(
 	done chan bool,
 	concurrent bool,
 	count int,
@@ -44,4 +44,24 @@ func Basic(
 	wg.Wait()
 
 	done <- true
+}
+
+func BasicWaitGroup(
+	wgIn *sync.WaitGroup,
+	concurrent bool,
+	count int,
+) {
+	wg := sync.WaitGroup{}
+	for count > 0 {
+		wg.Add(1)
+		if concurrent {
+			go RunFib(&wg, count)
+		} else {
+			RunFib(&wg, count)
+		}
+		count--
+	}
+	wg.Wait()
+
+	wgIn.Done()
 }

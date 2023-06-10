@@ -2,23 +2,46 @@ package concurrencyw
 
 import (
 	"fmt"
+	"sync"
 	"time"
 )
 
-func ExampleBasic() {
+func ExampleBasicChan() {
 
 	start := time.Now()
 
 	done := make(chan bool)
-	go Basic(done, true, 84)
+	go BasicChan(done, true, 84)
 	<-done
 
 	fmt.Printf(" [%v]", time.Since(start))
 
 	start = time.Now()
 
-	go Basic(done, false, 84)
+	go BasicChan(done, false, 84)
 	<-done
+
+	fmt.Printf(" [%v]", time.Since(start))
+
+	//output: ?
+}
+
+func ExampleBasicWaitGroup() {
+
+	start := time.Now()
+
+	wg := sync.WaitGroup{}
+	wg.Add(1)
+	go BasicWaitGroup(&wg, true, 84)
+	wg.Wait()
+
+	fmt.Printf(" [%v]", time.Since(start))
+
+	start = time.Now()
+
+	wg.Add(1)
+	go BasicWaitGroup(&wg, false, 84)
+	wg.Wait()
 
 	fmt.Printf(" [%v]", time.Since(start))
 
